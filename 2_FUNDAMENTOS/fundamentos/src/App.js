@@ -3,6 +3,7 @@ import './App.css';
 import TemplateExpressions from './components/TempleteExpressions';
 import MyComponent from './components/MyComponent';
 import Events from './components/Events';
+import Challenges from './components/Challenge';
 
 function App() {
   return (
@@ -10,8 +11,9 @@ function App() {
       <h1>Fundamentos React</h1>
       <FirstComponent />
       <TemplateExpressions />
-      <MyComponent /> {/* Componente antes reindenizado em "FirtComponent" agora reaproveitado no componente Pai */}
+      <MyComponent /> {/* Componente antes reindenizado em "FirtComponent" agora reaproveitado no componente */}
       <Events />
+      <Challenges />
     </div>
   );
 }
