@@ -3,8 +3,12 @@ import { useState } from 'react';
 
 const MyForm = () => {
   // 3 - grenciamento de dados
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const [bio, setBio] = useState("");
+
+  const [role, setRole] = useState("");
 
   const handleName = (e) => {
     setName(e.target.value);
@@ -13,12 +17,16 @@ const MyForm = () => {
   //console.log(name);
   //console.log(email);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     console.log("Enviando o formulário");
-    console.log(name, email);
-  };
+    console.log(name, email, bio, role);
 
+    // 7 - Limpa form
+    setName("");
+    setEmail("");
+    setBio("");
+  };
 
   return (
     <div>
@@ -30,8 +38,9 @@ const MyForm = () => {
                 <input 
                   type="text" 
                   name="name" 
-                  placeholder="Digite seu nome" 
-                  onChange={handleName} 
+                  placeholder="Digite seu nome"
+                  onChange={handleName}
+                  value={name}
                 />
             </div>
             {/* 2 - label envolvendo input */}
@@ -43,7 +52,27 @@ const MyForm = () => {
                   name="email" 
                   placeholder="Digite seu email" 
                   onChange={(e) => setEmail(e.target.value)} 
+                  value={email}
                 />
+            </label>
+            {/* 8 - texttarea */}
+            <label>
+              <span>Bio:</span>
+              <textarea 
+                name="bio" 
+                placeholder="Descrição do usuário" 
+                onChange={((e) => setBio(e.target.value))} 
+                value={bio}>
+              </textarea>              
+            </label>
+            {/* 9 - select */}
+            <label>
+              <sapan>Função no sistema</sapan>
+              <select name="role" onChange={(e) => setRole(e.target.value)}>
+                <option value="user">Usuário</option>
+                <option value="editor">Editor</option>
+                <option value="admin">Admin</option>
+              </select>
             </label>
             <input type="submit"  value="Enviar"/>
         </form>
