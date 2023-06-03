@@ -9,20 +9,26 @@ function App() {
   const [products, setProducts] = useState([]);
 
   // 1 - resgatando dados
-  useEffect(async () => { //funções declaradas como async dizem para o js que uma PROMISE é esperada
+  useEffect(() => { //useEffect permite que um componente seja renderizado apenas uma vez
 
-    const res = await fetch(url) // fetch inicia o processo de buscca de um recurso da rede, retorna uma promessa que é cumprida assim que a resposta estiver disponivel
+    async function fetData(){//funções declaradas como async dizem para o js que uma PROMISE é esperada
+    const res = await fetch(url); // fetch inicia o processo de buscca de um recurso da rede, retorna uma promessa que é cumprida assim que a resposta estiver disponivel
 
-    const data = await res.json()// await é uma função js utilizada em conjunto com o async on o mesmo para a function até que a PROMISE seja cumprida.
+    const data = await res.json();// await é uma função js utilizada em conjunto com o async on o mesmo para a function até que a PROMISE seja cumprida.
 
     setProducts(data);
+    }
+    fetData();
   }, []);
-
-  console.log(products);
 
   return (
     <div className="App">
       <h1>Lista de produtos</h1>
+      {products.map((product) => (
+      <li key={products.id}>  
+        {product.name} - R$: {product.price}
+      </li>
+      ))}
     </div>
   );
 }
