@@ -2,17 +2,23 @@ import './App.css';
 
 import { useState, useEffect } from "react";
 
+// 4 - Custom hook 
+import { useFetch } from "./hooks/useFetch";//importação do hook customizado
+
 const url = "http://localhost:3000/products";
 
 function App() {
 
   const [products, setProducts] = useState([]);
 
+  // 4 - custom
+  const { data: items } = useFetch(url); //aplicação do hook customizado, atribuindo ao retorno o valor de "items"
+
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
 
   // 1 - resgatando dados
-  useEffect(() => { //useEffect permite que um componente seja renderizado apenas uma vez
+  /*useEffect(() => { //useEffect permite que um componente seja renderizado apenas uma vez
 
     async function fetData(){//funções declaradas como async dizem para o js que uma PROMISE é esperada
     const res = await fetch(url); // fetch inicia o processo de buscca de um recurso da rede, retorna uma promessa que é cumprida assim que a resposta estiver disponivel
@@ -22,7 +28,7 @@ function App() {
     setProducts(data);
     }
     fetData();
-  }, []);
+  }, []);*/
 
   // 2 - Adição de Produtos
 
@@ -57,7 +63,7 @@ function App() {
     <div className="App">
       <h1>Lista de produtos</h1>
       <ul>
-        {products.map((product) => (
+        {items && items.map((product) => (
         <li key={products.id}>  
           {product.name} - R$: {product.price}
         </li>
