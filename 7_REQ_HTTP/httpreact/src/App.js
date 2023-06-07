@@ -40,7 +40,17 @@ function App() {
           "Content-Type":"application/json"
         },
         body: JSON.stringify(product) //Configurando o corpo da requisição em JSON
-      })
+      });
+
+    // 3 - Carregamento dinamico
+
+    const addeProduct = await res.json(); // Guardando o retorno do novo produto que esta sendo adicionado, ou, guardando o POST
+
+    setProducts ((prevProducts) => [...prevProducts, addeProduct]); // Adicionando o novo produto na array mantendo os produtos que ja existiam
+
+    setName("");
+    setPrice("");
+
   }
 
   return (
