@@ -1,6 +1,6 @@
 import './App.css';
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 // 4 - Custom hook 
 import { useFetch } from "./hooks/useFetch";//importação do hook customizado
@@ -12,7 +12,7 @@ function App() {
   const [products, setProducts] = useState([]);
 
   // 4 - custom
-  const { data: items } = useFetch(url); //aplicação do hook customizado, atribuindo ao retorno o valor de "items"
+  const { data: items, httpConfig } = useFetch(url); //aplicação do hook customizado, atribuindo ao retorno o valor de "items"
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -40,7 +40,7 @@ function App() {
         price, 
       };
 
-      const res = await fetch(url, { //Requisão
+      /*const res = await fetch(url, { //Requisão
         method: "POST", //Incerção do verbo http
         headers: { //Cabeçalho da requisição
           "Content-Type":"application/json"
@@ -52,7 +52,11 @@ function App() {
 
     const addeProduct = await res.json(); // Guardando o retorno do novo produto que esta sendo adicionado, ou, guardando o POST
 
-    setProducts ((prevProducts) => [...prevProducts, addeProduct]); // Adicionando o novo produto na array mantendo os produtos que ja existiam
+    setProducts ((prevProducts) => [...prevProducts, addeProduct]); // Adicionando o novo produto na array mantendo os produtos que ja existiam*/
+
+    //5 - Refatorando post
+    httpConfig(product, "POST")
+
 
     setName("");
     setPrice("");
