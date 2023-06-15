@@ -10,11 +10,14 @@ export const useFetch = (url) => { //fnção ja com o export para posteriormente
     const [method, setMethod] = useState(null);
     const [callFetch, setCallFetch] = useState(false);
 
+    // 6 loading
+    const [loading, setLoading] = useState(false);
+
     const httpConfig = (data, method) => {
         if(method === 'POST') {
             setConfig({
                 method, 
-                hraders: {
+                headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(data)
@@ -28,11 +31,16 @@ export const useFetch = (url) => { //fnção ja com o export para posteriormente
 
         const fetchData = async () => {
 
+            // 6 - loading
+            setLoading(true);
+
             const res = await fetch(url);
 
             const json = await res.json();
 
             setData(json);
+
+            setLoading(false);
         };
 
         fetchData();
@@ -56,5 +64,5 @@ export const useFetch = (url) => { //fnção ja com o export para posteriormente
         httpRequest();
     }, [config, method, url]);
 
-    return { data, httpConfig }; // retorno que posteriormente será aplicado no componente desejado
+    return { data, httpConfig, loading }; // retorno que posteriormente será aplicado no componente desejado
 };

@@ -18,22 +18,12 @@
     {
       "name": "Tenis",
       "price": "35,50",
-      "id": 4
-    },
-    {
-      "name": "Tenis",
-      "price": "35,50",
       "id": 5
     },
     {
       "name": "teste",
       "price": "321",
       "id": 6
-    },
-    {
-      "name": "teste",
-      "price": "321",
-      "id": 7
     },
     {
       "name": "teclado",
@@ -44,6 +34,16 @@
       "name": "cadeira",
       "price": "200",
       "id": 9
+    },
+    {
+      "name": "dani",
+      "price": "42424554354",
+      "id": 10
+    },
+    {
+      "name": "carro",
+      "price": "1365135",
+      "id": 11
     }
   ]
 }
