@@ -13,6 +13,9 @@ export const useFetch = (url) => { //fnção ja com o export para posteriormente
     // 6 loading
     const [loading, setLoading] = useState(false);
 
+    // 7 - tratando erros
+    const [error, setError] = useState(null);
+
     const httpConfig = (data, method) => {
         if(method === 'POST') {
             setConfig({
@@ -34,12 +37,15 @@ export const useFetch = (url) => { //fnção ja com o export para posteriormente
             // 6 - loading
             setLoading(true);
 
-            const res = await fetch(url);
+            try {
+                const res = await fetch(url);
 
-            const json = await res.json();
+                const json = await res.json();
 
-            setData(json);
-
+                setData(json);
+            } catch (error){
+                setError("Houve algum erro ao carregar os dados")
+            }
             setLoading(false);
         };
 
@@ -64,5 +70,5 @@ export const useFetch = (url) => { //fnção ja com o export para posteriormente
         httpRequest();
     }, [config, method, url]);
 
-    return { data, httpConfig, loading }; // retorno que posteriormente será aplicado no componente desejado
+    return { data, httpConfig, loading, error }; // retorno que posteriormente será aplicado no componente desejado
 };
