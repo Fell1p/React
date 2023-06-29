@@ -1,0 +1,15 @@
+.games {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+  
+.games li {
+    border: 1px solid #868585;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    list-style: none;
+    margin: 0 10px;
+    width: 25%;
+}
