@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pags/Home';
 import About from './pags/About';
 import Games from './pags/Games';
+import Info from './pags/Info';
 
 // components
 import Navbar from "./components/Navbar";
@@ -24,6 +25,8 @@ function App() {
           <Route path="/about" element={<About />} />
           {/* 4 - rota dinamica*/}
           <Route path="/games/:id" element={<Games />} /> {/*O termo ":id" dis que essa rota é dinamica*/}
+          {/* 6 - nested route */}
+          <Route path='/games/:id/info' element={<Info />} />
         </Routes>
       </BrowserRouter>
     </div>
