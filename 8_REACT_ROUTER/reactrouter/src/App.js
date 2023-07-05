@@ -23,7 +23,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           {/* 4 - rota dinamica*/}
-          <Route path="/games/:id" element={<Games />} />
+          <Route path="/games/:id" element={<Games />} /> {/*O termo ":id" dis que essa rota é dinamica*/}
         </Routes>
       </BrowserRouter>
     </div>
