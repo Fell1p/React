@@ -11,8 +11,6 @@ const Games = () => {
 
     const { data: game, loading, error } = useFetch(url)
 
-    console.log(game);
-
   return (
     <>
     <p>ID do produto: {id}</p>
@@ -22,6 +20,7 @@ const Games = () => {
       <div>
         <h1>{game.name}</h1>
         <p>R${game.price}</p>
+
         {/* 6 - nested routes */}
         <Link to={`/games/${game.id}/info`}>Mais informações</Link>
       </div>

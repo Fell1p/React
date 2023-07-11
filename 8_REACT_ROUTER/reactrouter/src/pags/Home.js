@@ -16,12 +16,12 @@ const Home = () => {
       {loading && <p>Carregando...</p>}
       <ul className="games">
         {items &&
-        items.map((item) => (
+        items.map((item) => ( //Loop de renderização de elementos
           <li key={item.id}>
             <h2>{item.name}</h2>
             <p>R$: {item.price}</p>
             {/* 4 - rota dinamica */}
-          <Link to={`/games/${item.id}`}>Detalhes</Link>
+          <Link to={`/games/${item.id}`}>Detalhes</Link> {/*Aplicando uma rota dinamica*/}
           </li>
         ))}
       </ul>
