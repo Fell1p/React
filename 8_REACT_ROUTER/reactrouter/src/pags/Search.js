@@ -12,6 +12,8 @@ const Search = () => {
     <div>
         <h1>Resultados disponíveis</h1>
         <ul className="games">
+        {error && <p>{error}</p>}
+        {loading && <p>Carregando...</p>}   
         {items &&
         items.map((item) => ( 
           <li key={item.id}>

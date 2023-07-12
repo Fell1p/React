@@ -1,7 +1,7 @@
 import './App.css';
 
 // 1 - config react router 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 // pages
 import Home from './pags/Home';
@@ -35,6 +35,8 @@ function App() {
           <Route path="/games/:id" element={<Games />} /> {/*O termo ":id" dis que essa rota é dinamica*/}
           {/* 9 - search */}
           <Route path='/search' element={<Search />} />
+          {/* 10 - redirect */}
+          <Route path='/company' element={<Navigate to="/about" />} />
           {/* 7 - No march route */}
           <Route path="*" element={<NotFound />} />
         </Routes>
