@@ -1,12 +1,13 @@
-import { useContext } from "react";
+import { createContext, useContext } from "react";
 import { TitleColorContext } from "../context/TitleColorContext";
 
 export const useTitleColorContext = () => {
-  const context = useContext(TitleColorContext);
 
-  if (!context) {
-    console.log("Contexto não encontrado.");
-  }
+    const context = useContext(TitleColorContext)
 
-  return context;
-};
+    if(!context){
+        console.log("Context não encontrado")
+    }
+
+    return context
+}

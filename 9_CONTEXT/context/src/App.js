@@ -1,27 +1,19 @@
-import "./App.css";
-
-// 1 - config react router, sem links
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-// pages
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Products from "./pages/Products";
-
-// 2 - adicionando links
-// components
-import Navbar from "./components/Navbar";
+import './App.css';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import NavBar from './components/navBar/NavBar';
+import Home from './pages/Home';
+import About from './pages/About';
+import Lista from './pages/Lista'
 
 function App() {
   return (
     <div className="App">
-      <h1>Context</h1>
       <BrowserRouter>
-        <Navbar />
+        <NavBar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="products" element={<Products />} />
-          <Route path="about" element={<About />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/lista' element={<Lista />} />
         </Routes>
       </BrowserRouter>
     </div>
